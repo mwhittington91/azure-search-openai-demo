@@ -16,11 +16,21 @@
         "editor.formatOnSave": true
     },
     "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
         "**/__pycache__": true,
         "**/.coverage": true,
         "**/.pytest_cache": true,
         "**/.ruff_cache": true,
-        "**/.mypy_cache": true
+        "**/.mypy_cache": true,
+        "**/.retool_types/**": true,
+        "**/*tsconfig.json": true,
+        ".cache": true,
+        "retool.config.json": true
     },
     "search.exclude": {
         "**/node_modules": true,

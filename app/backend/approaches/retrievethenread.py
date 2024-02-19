@@ -22,7 +22,7 @@ class RetrieveThenReadApproach(Approach):
     """
 
     system_chat_template = (
-        "You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions. "
+        "Assistant helps the user with questions based of ECFS documents. "
         + "Use 'you' to refer to the individual asking the questions even if they ask with 'I'. "
         + "Answer the following question using only the data provided in the sources below. "
         + "For tabular information return it as an html table. Do not return markdown format. "
@@ -32,16 +32,21 @@ class RetrieveThenReadApproach(Approach):
 
     # shots/sample conversation
     question = """
-'What is the deductible for the employee plan for a visit to Overlake in Bellevue?'
+'How does the Electronic Comment Filing System (ECFS) impact public participation in regulatory processes concerning telecommunications?'
 
 Sources:
-info1.txt: deductibles depend on whether you are in-network or out-of-network. In-network deductibles are $500 for employee and $1000 for family. Out-of-network deductibles are $1000 for employee and $2000 for family.
-info2.pdf: Overlake is in-network for the employee plan.
-info3.pdf: Overlake is the name of the area that includes a park and ride near Bellevue.
-info4.pdf: In-network institutions include Overlake, Swedish and others in the region
+info1.txt: The ECFS allows for the submission of comments and replies on regulatory matters online, facilitating wider public engagement.
+info2.pdf: Prior to ECFS, participation in telecommunications regulatory processes was limited due to the necessity of submitting comments via mail or in person.
+info3.pdf: ECFS has significantly increased the volume of comments received by the regulatory authority, indicating higher public participation.
+info4.pdf: The system supports transparency by making all submissions publicly available online for review and response.
 """
-    answer = "In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf]."
 
+    answer = """The ECFS enhances public participation in regulatory processes related to telecommunications by enabling online 
+    submission of comments and replies, thereby facilitating wider engagement [info1.txt]. Before the introduction of ECFS, public 
+    participation was more limited due to the requirement of physical submissions [info2.pdf]. The system has led to an increase in 
+    the volume of comments received, indicating higher public involvement [info3.pdf]. Additionally, ECFS promotes transparency by 
+    making submissions publicly accessible online [info4.pdf]."""
+    
     def __init__(
         self,
         *,
